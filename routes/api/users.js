@@ -8,11 +8,11 @@ const keys = require('../../config/keys');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
-router.post('/register', (req, res) => {
+router.post("/register", (req, res) => {
     User.findOne({ email: req.body.email })
     .then(user => {
         if (user) {
-            return res.status(400).json({email: "This email address is already in use"})
+            return res.status(400).json({email: "This email address is already in use"});
         } else {
             const newUser = new User({
                 username: req.body.username,
@@ -33,7 +33,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
